@@ -14,7 +14,7 @@ namespace FootballGameConsoleSimulator
         private int currentTurn;
         private int currentHalf;
         private bool extraRound;
-        private List <RoundDetasil> roundDetails;
+        private List<RoundDetasil> roundDetails;
 
         //constructor to initialize the match between two teams
         public Match(Team team1, Team team2)
@@ -25,13 +25,13 @@ namespace FootballGameConsoleSimulator
             this.currentTurn = 0;
             this.extraRound = false;
             this.currentHalf = 1;
-            this.roundDetails=new List<RoundDetasil> ();
+            this.roundDetails = new List<RoundDetasil>();
         }
-    //method foe coin toss to determine which team starts
+        //method foe coin toss to determine which team starts
         public Team coinToss()
         {
             Random rand = new Random();
-            int toss = rand.Next (0, 2);
+            int toss = rand.Next(0, 2);
             if (toss == 0)
             {
                 Console.WriteLine($"{team1.getTeamName()} wins the coin toss and will start the match.");
@@ -46,13 +46,13 @@ namespace FootballGameConsoleSimulator
         //method to play a single turn
         public void playTurn(Team attackingTeam, Team defendingTeam)
         {
-            Console.WriteLine ($"\nTurn {currentTurn+1}:{attackingTeam.getTeamName()} is attacking, {defendingTeam.getTeamName()} is defending.");
+            Console.WriteLine($"\nTurn {currentTurn + 1}:{attackingTeam.getTeamName()} is attacking, {defendingTeam.getTeamName()} is defending.");
 
             //to calculate attack and defense power
-            int attackPower=attackingTeam.calculateDefensePower();
-            int defensePower=defendingTeam.calculateDefensePower();
+            int attackPower = attackingTeam.calculateDefensePower();
+            int defensePower = defendingTeam.calculateDefensePower();
 
-            Console.WriteLine($"{attackingTeam.getTeamName()} attack: {attackPower}"); 
+            Console.WriteLine($"{attackingTeam.getTeamName()} attack: {attackPower}");
             Console.WriteLine($"{defendingTeam.getTeamName()} attack: {attackPower}");
 
             //determine the outcome (goal or save)
@@ -63,19 +63,34 @@ namespace FootballGameConsoleSimulator
                 outcome = "Goal!";
                 Console.WriteLine($"{attackingTeam.getTeamName()} scores!");
             }
-            else 
+            else
             {
                 outcome = "Save!";
                 Console.WriteLine($"{defendingTeam.getTeamName()} successfully defends.");
             }
 
             //to store round details
-            roundDetails.Add(new RoundDetasil(attackingTeam.getTeamName(), defendingTeam.getTeamName(),attackingTeam.selectPlayersForAttack(),defendingTeam.selectPlayersForDefense
-                ,attackPower, defensePower,outcome));
+            roundDetails.Add(new RoundDetasil(attackingTeam.getTeamName(), defendingTeam.getTeamName(), attackingTeam.selectPlayersForAttack(), defendingTeam.selectPlayersForDefense
+                , attackPower, defensePower, outcome));
             currentTurn++;
 
         }
+        //method to simulate one half of the match
+        public void simulateHalf()
+        {
+            Console.WriteLine($"\nStarting Half {currentHalf}...");
+            Team staringTeam = coinToss();
+            Team otherTeam = (staringTeam == team1) ? team2 : team1;
 
-
+            //play multiple turn in each half
+            for (int i = 0; i < 10; i++)
+            {
+                if (i % 2 == 2)
+                    playTurn(staringTeam, otherTeam);
+                else
+                    playTurn(otherTeam, staringTeam);
+            }
+            currentHalf++;
+        }
     }
 }
