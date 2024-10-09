@@ -116,6 +116,8 @@ namespace FootballGameConsoleSimulator
         //method to get the current score
         public int GetScore() 
         { return score; }
+        // method to get the name of team
+        public string getTeamName() { return this.teamName; }
         //method to display team information
         public void DisplayTeamInfo() 
         {

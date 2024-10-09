@@ -27,6 +27,23 @@ namespace FootballGameConsoleSimulator
             this.currentHalf = 1;
             this.roundDetails=new List<RoundDetasil> ();
         }
+    //method foe coin toss to determine which team starts
+        public Team coinToss()
+        {
+            Random rand = new Random();
+            int toss = rand.Next (0, 2);
+            if (toss == 0)
+            {
+                Console.WriteLine($"{team1.getTeamName()} wins the coin toss and will start the match.");
+                return team1;
+            }
+            else
+            {
+                Console.WriteLine($"{team2.getTeamName()} wins the coin toss and will start the match.");
+                return team2;
+            }
+
+            }
 
 
     }
