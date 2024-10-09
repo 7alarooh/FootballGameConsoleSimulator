@@ -74,6 +74,12 @@ namespace FootballGameConsoleSimulator
             int defensePower = selectedDefense.Sum(p => p.GetEffectiveSkill());
             return defensePower;
         }
+        //method to increase team score
+        public void AddGoal()
+        { score++; }
+        //method to get the current score
+        public int GetScore() 
+        { return score; }
 
     }
 }
