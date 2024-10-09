@@ -103,5 +103,25 @@ namespace FootballGameConsoleSimulator
                 playTurn(team2 , team1);
             }
         }
+        // method to start and simulate the full match
+        public void startMatch()
+        {
+            Console.WriteLine("Statring the match...");
+            simulateHalf();
+            simulateHalf();
+
+            //to check if needing play extra round
+            if (team1.GetScore() == team2.GetScore())
+            {
+                simulateExtraRound();
+            }
+
+            // to display final result
+           // displayFinalRound();
+        }
+
+
+
+
     }
 }
