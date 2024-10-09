@@ -60,6 +60,13 @@ namespace FootballGameConsoleSimulator
                 .Take(3).ToList();
             return defense;
         }
+        //method to calculate total attack power
+        public int calculateAttackPower() 
+        {
+            var selectedAttackers = selectPlayersForAttack();
+            int attackPower=selectedAttackers.Sum(p=>p.GetEffectiveSkill());
+            return attackPower;
+        }
 
     }
 }
