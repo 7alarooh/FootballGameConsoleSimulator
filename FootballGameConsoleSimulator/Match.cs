@@ -42,8 +42,39 @@ namespace FootballGameConsoleSimulator
                 Console.WriteLine($"{team2.getTeamName()} wins the coin toss and will start the match.");
                 return team2;
             }
+        }
+        //method to play a single turn
+        public void playTurn(Team attackingTeam, Team defendingTeam)
+        {
+            Console.WriteLine ($"\nTurn {currentTurn+1}:{attackingTeam.getTeamName()} is attacking, {defendingTeam.getTeamName()} is defending.");
 
+            //to calculate attack and defense power
+            int attackPower=attackingTeam.calculateDefensePower();
+            int defensePower=defendingTeam.calculateDefensePower();
+
+            Console.WriteLine($"{attackingTeam.getTeamName()} attack: {attackPower}"); 
+            Console.WriteLine($"{defendingTeam.getTeamName()} attack: {attackPower}");
+
+            //determine the outcome (goal or save)
+            string outcome;
+            if (attackPower > defensePower)
+            {
+                attackingTeam.AddGoal();
+                outcome = "Goal!";
+                Console.WriteLine($"{attackingTeam.getTeamName()} scores!");
             }
+            else 
+            {
+                outcome = "Save!";
+                Console.WriteLine($"{defendingTeam.getTeamName()} successfully defends.");
+            }
+
+            //to store round details
+            roundDetails.Add(new RoundDetasil(attackingTeam.getTeamName(), defendingTeam.getTeamName(),attackingTeam.selectPlayersForAttack(),defendingTeam.selectPlayersForDefense
+                ,attackPower, defensePower,outcome));
+            currentTurn++;
+
+        }
 
 
     }
