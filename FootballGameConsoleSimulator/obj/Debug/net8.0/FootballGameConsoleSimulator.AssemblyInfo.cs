@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FootballGameConsoleSimulator")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+baff2ac5b271ab791687b06c8afe340c6b4ad975")]
 [assembly: System.Reflection.AssemblyProductAttribute("FootballGameConsoleSimulator")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FootballGameConsoleSimulator")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

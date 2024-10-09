@@ -117,7 +117,7 @@ namespace FootballGameConsoleSimulator
             }
 
             // to display final result
-           // displayFinalRound();
+           displayFinalRound();
         }
         //method to display detailed information about each round
         public void displayMatchDetails()
