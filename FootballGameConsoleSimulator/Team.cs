@@ -52,6 +52,14 @@ namespace FootballGameConsoleSimulator
                 .Take(3).ToList();
             return attackers; 
         }
+        // method to select 3 players for defense (must include a goalkeeper and defender/midfielder)
+        public List<Player> selectPlayersForDefense()
+        {
+            var defense = players.Where(p => p.position == Position.Goalkeeper || p.position == Position.Defender || p.position == Position.Midfielder)
+                .OrderByDescending(p => p.GetEffectiveSkill())
+                .Take(3).ToList();
+            return defense;
+        }
 
     }
 }
