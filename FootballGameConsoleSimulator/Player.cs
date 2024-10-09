@@ -16,10 +16,10 @@ namespace FootballGameConsoleSimulator
     public class Player
     {
         //private attributes
-        private string name;
-        public Position position;
-        private int skillLevel;
-        private int energyLevel;
+        public string name { get; private set; }
+        public Position position { get; private set; }
+        public int skillLevel { get; private set; }
+        public int energyLevel { get; private set; }
 
         //constructor to initialize the player's attributes
         public Player(string name, Position position, int skillLevel) 

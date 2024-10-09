@@ -9,13 +9,13 @@ namespace FootballGameConsoleSimulator
     public class RoundDetail
     {
         //private attributes
-        private string attackingTeam;
-        private string defendingTeam;
-        private List<Player> attackingplayers;
-        private List<Player> defendingplayers;
-        private int attackPower;
-        private int defendingPower;
-        private string outcome;
+        public string attackingTeam { get; private set; }
+        public string defendingTeam { get; private set; }
+        public List<Player> attackingplayers { get; private set; }
+        public List<Player> defendingplayers { get; private set; }
+        public int attackPower { get; private set; }
+        public int defendingPower { get; private set; }
+        public string outcome { get; private set; }
 
 
         // constructor

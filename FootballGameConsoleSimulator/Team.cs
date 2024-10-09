@@ -9,10 +9,10 @@ namespace FootballGameConsoleSimulator
     public class Team
     {
         //private attributes
-        private string teamName;
-        private List<Player> players;
-        private string formation;
-        private int score;
+        public string teamName{get; private set;}
+        public List<Player> players { get; private set; }
+        public string formation { get; private set; }
+        public int score { get; private set; }
 
         //constructor to initialize 
         public Team(string teamName)

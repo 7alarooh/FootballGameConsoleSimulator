@@ -1,20 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-namespace FootballGameConsoleSimulator
+﻿namespace FootballGameConsoleSimulator
 {
     public class Program
     {
-        static void Main(string[] args)
-        {
-            SoccerGameSimulator simulator = new SoccerGameSimulator();
-
-        }
-    }
-    public class SoccerGameSimulator
-    {
         private Match match;
-        // Main method to run the game
-        public void Run()
+        static void Main(string[] args)
         {
             bool running = true;
             while (running)
@@ -46,6 +35,10 @@ namespace FootballGameConsoleSimulator
                     Console.ReadKey();
                 }
             }
+
+            
         }
+
+
     }
 }
