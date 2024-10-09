@@ -39,6 +39,16 @@
             
         }
 
-
+        // Method to display the main menu
+        private void DisplayMainMenu()
+        {
+            Console.WriteLine("=========================================");
+            Console.WriteLine("        :soccer: Soccer Game Simulator :soccer:        ");
+            Console.WriteLine("=========================================");
+            Console.WriteLine("1. Start a New Match");
+            Console.WriteLine("2. Display Match Details");
+            Console.WriteLine("3. Exit");
+            Console.WriteLine("=========================================");
+        }
     }
 }
