@@ -27,7 +27,20 @@ namespace FootballGameConsoleSimulator
             this.name = name;
             this.position = position;   
             this.skillLevel = skillLevel;   
-            this.energyLevel=skillLevel;
+            this.energyLevel=100;
         }
+
+        ///////////// Methods /////////////////////
+        //method to decrease the plyer's energy level
+        public void DecreaseEnergy(int amount)
+        {
+            energyLevel -= amount;
+            if (energyLevel < 0)
+            {  
+                energyLevel = 0; //ensure dose not go below 0 
+            }
+        }
+
+
     }
 }
