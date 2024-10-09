@@ -128,6 +128,16 @@ namespace FootballGameConsoleSimulator
                 detail.displayMatchDetails();
             }
         }
+        //method to display the final result of the match
+        private void displayFinalResult()
+        {
+            Console.WriteLine($"\nFinal Score: {team1.getTeamName()} {team1.GetScore} - {team2.getTeamName()} {team2.GetScore()}");
+            if (team1.GetScore() > team2.GetScore())
+            { Console.WriteLine($"{team1.getTeamName()} wins the match!"); }
+            else if (team1.GetScore() < team2.GetScore())
+            { Console.WriteLine($"{team1.getTeamName()} wins the match!"); }
+            else { Console.WriteLine($"The match ends in a draw!"); }
+        }
 
 
 
