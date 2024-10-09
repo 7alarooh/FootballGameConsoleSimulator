@@ -46,6 +46,10 @@ namespace FootballGameConsoleSimulator
             return (skillLevel + energyLevel)/100;
         
         }
+        //
+        public string GetName() { return this.name; }
+        public int GetskillLevel() {  return this.skillLevel; }
+        public Position GetPosition() { return this.position; }
         //method to display player details
         public void DisplayPlayerInfo() 
         {

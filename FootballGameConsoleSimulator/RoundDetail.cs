@@ -30,5 +30,31 @@ namespace FootballGameConsoleSimulator
             this.outcome = outcome;
         }
 
+        //method to diplay the round summary
+        public void displayMatchDetails() 
+        {
+            Console.WriteLine("\nRound summary:");
+            Console.WriteLine($"Attacking Team:{attackingTeam}");
+            Console.WriteLine($"Defending Team:{defendingTeam}");
+
+
+            Console.WriteLine($"===============================================");
+            Console.WriteLine($"Attacking Players:");
+            foreach( Player player in attackingplayers )
+            {
+                Console.WriteLine($"- {player.GetName()} (Skill:{player.GetskillLevel()}, Position: {player.GetPosition()})");
+            }
+            Console.WriteLine($"--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine($"Defending Players:");
+            foreach (Player player in defendingplayers)
+            {
+                Console.WriteLine($"- {player.GetName()} (Skill:{player.GetskillLevel()}, Position: {player.GetPosition()})");
+            }
+            Console.WriteLine($"===============================================");
+            Console.WriteLine($"Attack Power: {attackPower}");
+            Console.WriteLine($"Defense Power: {defendingPower}");
+            Console.WriteLine($"Outcome: {outcome}");
+        }
+
     }
 }

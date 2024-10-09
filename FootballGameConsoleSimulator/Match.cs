@@ -14,7 +14,7 @@ namespace FootballGameConsoleSimulator
         private int currentTurn;
         private int currentHalf;
         private bool extraRound;
-        private List<RoundDetasil> roundDetails;
+        private List<RoundDetail> roundDetails;
 
         //constructor to initialize the match between two teams
         public Match(Team team1, Team team2)
@@ -25,7 +25,7 @@ namespace FootballGameConsoleSimulator
             this.currentTurn = 0;
             this.extraRound = false;
             this.currentHalf = 1;
-            this.roundDetails = new List<RoundDetasil>();
+            this.roundDetails = new List<RoundDetail>();
         }
         //method foe coin toss to determine which team starts
         public Team coinToss()
@@ -70,8 +70,7 @@ namespace FootballGameConsoleSimulator
             }
 
             //to store round details
-            roundDetails.Add(new RoundDetasil(attackingTeam.getTeamName(), defendingTeam.getTeamName(), attackingTeam.selectPlayersForAttack(), defendingTeam.selectPlayersForDefense
-                , attackPower, defensePower, outcome));
+            roundDetails.Add(new RoundDetail(attackingTeam.getTeamName(), defendingTeam.getTeamName(), attackingTeam.selectPlayersForAttack(), defendingTeam.selectPlayersForDefense(), attackPower, defensePower, outcome));
             currentTurn++;
 
         }
@@ -117,13 +116,13 @@ namespace FootballGameConsoleSimulator
             }
 
             // to display final result
-           displayFinalRound();
+            displayFinalResult();
         }
         //method to display detailed information about each round
         public void displayMatchDetails()
         {
             Console.WriteLine("\nMatch Details:");
-            foreach(RoundDetasil detail in roundDetails)
+            foreach(RoundDetail detail in roundDetails)
             {
                 detail.displayMatchDetails();
             }
