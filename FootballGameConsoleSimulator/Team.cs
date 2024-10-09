@@ -44,6 +44,14 @@ namespace FootballGameConsoleSimulator
             }
             Console.WriteLine($"{teamName} selected formation: {formation}");
         }
+        //method to select 3 players for attack (must include at least 1 attacker/ midfielder)
+        public List<Player> selectPlayersForAttack()
+        {
+            var attackers=players.Where(p => p.position == Position.Forward || p.position == Position.Midfielder)
+                .OrderByDescending(p=> p.GetEffectiveSkill())
+                .Take(3).ToList();
+            return attackers; 
+        }
 
     }
 }

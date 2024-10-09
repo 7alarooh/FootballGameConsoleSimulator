@@ -17,7 +17,7 @@ namespace FootballGameConsoleSimulator
     {
         //private attributes
         private string name;
-        private Position position;
+        public Position position;
         private int skillLevel;
         private int energyLevel;
 
