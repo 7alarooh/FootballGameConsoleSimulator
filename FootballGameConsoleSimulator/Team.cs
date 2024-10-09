@@ -80,6 +80,17 @@ namespace FootballGameConsoleSimulator
         //method to get the current score
         public int GetScore() 
         { return score; }
+        //method to display team information
+        public void DisplayTeamInfo() 
+        {
+            Console.WriteLine($"| Team: {teamName} ---- formation:{formation} ---- Score: {score} |");
+            Console.WriteLine("| Player:-----------------------------------------------------------");
+            foreach (var player in players)
+            {
+                player.DisplayPlayerInfo();
+            }
+
+        }
 
     }
 }
