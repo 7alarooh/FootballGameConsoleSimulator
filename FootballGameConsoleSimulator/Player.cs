@@ -20,5 +20,14 @@ namespace FootballGameConsoleSimulator
         private Position position;
         private int skillLevel;
         private int energyLevel;
+
+        //constructor to initialize the player's attributes
+        public Player(string name, Position position, int skillLevel) 
+        {
+            this.name = name;
+            this.position = position;   
+            this.skillLevel = skillLevel;   
+            this.energyLevel=skillLevel;
+        }
     }
 }
