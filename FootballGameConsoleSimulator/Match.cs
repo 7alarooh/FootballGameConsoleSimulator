@@ -119,6 +119,15 @@ namespace FootballGameConsoleSimulator
             // to display final result
            // displayFinalRound();
         }
+        //method to display detailed information about each round
+        public void displayMatchDetails()
+        {
+            Console.WriteLine("\nMatch Details:");
+            foreach(RoundDetasil detail in roundDetails)
+            {
+                detail.displayMatchDetails();
+            }
+        }
 
 
 
