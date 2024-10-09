@@ -13,5 +13,15 @@ namespace FootballGameConsoleSimulator
         private List<Player> players;
         private string formation;
         private int score;
+
+        //constructor to initialize 
+        public Team(string teamName)
+        {
+            this.teamName = teamName;
+            this.score = 0;
+        }
+        /////////Methods//////////
+       
+
     }
 }
