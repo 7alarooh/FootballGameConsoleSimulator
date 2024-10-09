@@ -92,5 +92,16 @@ namespace FootballGameConsoleSimulator
             }
             currentHalf++;
         }
+        //method to simulate an extra round in case of a tie
+        public void simulateExtraRound()
+        {
+            Console.WriteLine("\nThe Match is tied! Playing an extra round...");
+            extraRound=true;
+            playTurn(team1 , team2);
+            if (team1.GetScore() == team2.GetScore())
+            {
+                playTurn(team2 , team1);
+            }
+        }
     }
 }
