@@ -40,6 +40,17 @@ namespace FootballGameConsoleSimulator
                 energyLevel = 0; //ensure dose not go below 0 
             }
         }
+        //method to calculate the player's effective skill, witch is based on their energy level
+        public int GetEffectiveSkill()
+        {
+            return (skillLevel + energyLevel)/100;
+        
+        }
+        //method to display player details
+        public void DisplayPlayerInfo() 
+        {
+            Console.WriteLine($"Player: {name} \t|  Position: {position} \t| Skill Level: {skillLevel} \t| Energy: {energyLevel} ");
+        }
 
 
     }
