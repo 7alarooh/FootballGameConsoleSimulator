@@ -19,6 +19,8 @@ namespace FootballGameConsoleSimulator
         {
             this.teamName = teamName;
             this.score = 0;
+            chooseFormation();
+            this.players = GeneratePlayers();
         }
         /////////Methods//////////
         //method to allow the user to choose a formation
@@ -43,6 +45,40 @@ namespace FootballGameConsoleSimulator
                     break;
             }
             Console.WriteLine($"{teamName} selected formation: {formation}");
+        }
+        //private method to generate 11 players with random skill level
+        private List<Player> GeneratePlayers() 
+        {
+            List<Player> teamPlayers = new List<Player>();
+            Random rand = new Random();
+
+            string[] formationSplit = formation.Split('-');
+            int numDefenders=int.Parse(formationSplit[0]);
+            int numMidfielders=int.Parse(formationSplit[1]);
+            int numForwards=int.Parse(formationSplit[2]);
+            Console.WriteLine("Enter the Goal Keeper Name: ");
+            string GKName=Console.ReadLine();
+            teamPlayers.Add(new Player(GKName, Position.Goalkeeper, rand.Next(1, 101)));
+
+            for (int i = 0; i < numDefenders; i++)
+            {
+                Console.WriteLine($"Enter the Defender Name: [{i+1}] ");
+                string DeName = Console.ReadLine();
+                teamPlayers.Add(new Player(DeName, Position.Defender, rand.Next(1, 101)));
+            }
+            for (int i = 0; i < numMidfielders; i++)
+            {
+                Console.WriteLine($"Enter the Midfielder Name: [{i + 1}] ");
+                string MidfName = Console.ReadLine();
+                teamPlayers.Add(new Player(MidfName, Position.Midfielder, rand.Next(1, 101)));
+            }
+            for (int i = 0; i < numForwards; i++)
+            {
+                Console.WriteLine($"Enter the Forward Name: [{i + 1}] ");
+                string ForName = Console.ReadLine();
+                teamPlayers.Add(new Player(ForName, Position.Forward, rand.Next(1, 101)));
+            }
+            return teamPlayers;
         }
         //method to select 3 players for attack (must include at least 1 attacker/ midfielder)
         public List<Player> selectPlayersForAttack()
@@ -89,7 +125,6 @@ namespace FootballGameConsoleSimulator
             {
                 player.DisplayPlayerInfo();
             }
-
         }
 
     }
