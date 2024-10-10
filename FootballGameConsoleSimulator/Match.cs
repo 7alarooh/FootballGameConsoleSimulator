@@ -15,6 +15,7 @@ namespace FootballGameConsoleSimulator
         private int currentHalf;
         private bool extraRound;
         private List<RoundDetail> roundDetails;
+        private int numberOfRounds;
 
         //constructor to initialize the match between two teams
         public Match(Team team1, Team team2)
@@ -27,6 +28,7 @@ namespace FootballGameConsoleSimulator
             this.currentHalf = 1;
             this.roundDetails = new List<RoundDetail>();
         }
+
         //method foe coin toss to determine which team starts
         public Team coinToss()
         {
@@ -95,14 +97,14 @@ namespace FootballGameConsoleSimulator
             }
         }
         //method to simulate one half of the match
-        public void simulateHalf()
+        public void simulateHalf(int numberOfRounds)
         {
             Console.WriteLine($"\nStarting Half {currentHalf}...");
             Team staringTeam = coinToss();
             Team otherTeam = (staringTeam == team1) ? team2 : team1;
 
             //play multiple turn in each half
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < numberOfRounds; i++)
             {
                 if (i % 2 == 2)
                     playTurn(otherTeam, staringTeam);
@@ -127,9 +129,32 @@ namespace FootballGameConsoleSimulator
         // method to start and simulate the full match
         public void startMatch()
         {
-            Console.WriteLine("Statring the match...");
-            simulateHalf();
-            simulateHalf();
+            Console.Clear();
+            Console.WriteLine("----------------------------------------------------------------");
+            Console.WriteLine("- Please, the first enter an even number of rounds for the match:");
+            Console.WriteLine("----------------------------------------------------------------");
+            
+            bool validInput = false;
+            while (!validInput)
+            {
+                string input = Console.ReadLine();
+                // Try to parse the input to an integer
+                if (int.TryParse(input, out int rounds))
+                {
+                    if (rounds > 0 && rounds % 2 == 0) // Check if it's an even number
+                    {
+                        numberOfRounds = rounds/2;
+                        validInput = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("The number of rounds must be an even number greater than 0. Please try again.");
+                    }
+                }
+            }
+                    Console.WriteLine("Statring the match...");
+            simulateHalf(numberOfRounds);
+            simulateHalf(numberOfRounds);
 
             //to check if needing play extra round
             if (team1.GetScore() == team2.GetScore())
