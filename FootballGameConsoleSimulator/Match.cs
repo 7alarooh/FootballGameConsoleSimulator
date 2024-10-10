@@ -46,7 +46,8 @@ namespace FootballGameConsoleSimulator
         //method to play a single turn
         public void playTurn(Team attackingTeam, Team defendingTeam)
         {
-
+            List<Player> attackingPlayers = attackingTeam.selectPlayersForAttack();
+            List<Player> defendingPlayers = attackingTeam.selectPlayersForDefense();
             Console.WriteLine($"        :... Turn ( {currentTurn + 1} ) ...:               ");
             Console.WriteLine($"\nTurn {currentTurn + 1}:{attackingTeam.getTeamName()} is attacking, {defendingTeam.getTeamName()} is defending.");
 
@@ -73,8 +74,25 @@ namespace FootballGameConsoleSimulator
 
             //to store round details
             roundDetails.Add(new RoundDetail(attackingTeam.getTeamName(), defendingTeam.getTeamName(), attackingTeam.selectPlayersForAttack(), defendingTeam.selectPlayersForDefense(), attackPower, defensePower, outcome));
+            EndTurn(attackingPlayers, defendingPlayers);
             currentTurn++;
 
+        }
+        // method to make sure reduced all players after a round is completed
+        public void EndTurn(List<Player> attackingPlayers, List<Player> defendingPlayers)
+        {
+            foreach (var player in attackingPlayers) { DecreaseEnergy(player, 0.10); }
+            foreach (var player in defendingPlayers) { DecreaseEnergy(player, 0.05); }
+        }
+        //method to decrease the plyer's energy level
+        public void DecreaseEnergy(Player player, double percentage)
+        {
+            player.energyLevel -= (int)(player.energyLevel * percentage);
+
+            if (player.energyLevel < 0)
+            {
+                player.energyLevel = 0; //ensure dose not go below 0 
+            }
         }
         //method to simulate one half of the match
         public void simulateHalf()

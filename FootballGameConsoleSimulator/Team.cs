@@ -145,7 +145,7 @@ namespace FootballGameConsoleSimulator
                 defenders.Remove(defender); // Remove selected defender to avoid duplicates
             }
             // Fill remaining slot (if any) from defenders or midfielders
-            while (selectedPlayers.Count < 3)
+            while (selectedPlayers.Count >3)
             {
                 var availablePlayers = defenders.Concat(midfielders).ToList();
                 if (availablePlayers.Count == 0) break; // No more players to select
@@ -158,20 +158,19 @@ namespace FootballGameConsoleSimulator
                     midfielders.Remove(randomPlayer);
             }
             return selectedPlayers;
-
         }
         //method to calculate total attack power
         public int calculateAttackPower() 
         {
             var selectedAttackers = selectPlayersForAttack();
-            int attackPower=selectedAttackers.Sum(p=>p.GetEffectiveSkill());
+            int attackPower=selectedAttackers.Sum(p=>p.GetskillLevel());
             return attackPower;
         }
         //method to calculate total defense power
         public int calculateDefensePower()
         {
             var selectedDefense = selectPlayersForDefense();
-            int defensePower = selectedDefense.Sum(p => p.GetEffectiveSkill());
+            int defensePower = selectedDefense.Sum(p => p.GetskillLevel());
             return defensePower;
         }
         //method to increase team score

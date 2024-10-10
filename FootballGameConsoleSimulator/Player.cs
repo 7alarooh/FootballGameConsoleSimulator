@@ -19,7 +19,7 @@ namespace FootballGameConsoleSimulator
         public string name { get; private set; }
         public Position position { get; private set; }
         public int skillLevel { get; private set; }
-        public int energyLevel { get; private set; }
+        public int energyLevel;
 
         //constructor to initialize the player's attributes
         public Player(string name, Position position, int skillLevel) 
@@ -27,25 +27,11 @@ namespace FootballGameConsoleSimulator
             this.name = name;
             this.position = position;   
             this.skillLevel = skillLevel;   
-            this.energyLevel=100;
+            this.energyLevel= skillLevel;
         }
 
         ///////////// Methods /////////////////////
-        //method to decrease the plyer's energy level
-        public void DecreaseEnergy(int amount)
-        {
-            energyLevel -= amount;
-            if (energyLevel < 0)
-            {  
-                energyLevel = 0; //ensure dose not go below 0 
-            }
-        }
-        //method to calculate the player's effective skill, witch is based on their energy level
-        public int GetEffectiveSkill()
-        {
-            return (skillLevel + energyLevel)/100;
         
-        }
         //
         public string GetName() { return this.name; }
         public int GetskillLevel() {  return this.skillLevel; }
