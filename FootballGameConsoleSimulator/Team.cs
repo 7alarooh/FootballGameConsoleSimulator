@@ -87,11 +87,41 @@ namespace FootballGameConsoleSimulator
         public List<Player> selectPlayersForAttack()
         {
             Random rand = new Random();
+            // Get lists of forwards and midfielders
+            var forwards = players.Where(p => p.position == Position.Forward).ToList();
+            var midfielders = players.Where(p => p.position == Position.Midfielder).ToList();
+            List<Player> selectedPlayers = new List<Player>();
 
-            var attackers=players.Where(p => p.position == Position.Forward || p.position == Position.Midfielder)
-                .OrderByDescending(p=> p.GetEffectiveSkill())
-                .Take(3).ToList();
-            return attackers; 
+            // Ensure at least 1 forward is selected (if available)
+            if (forwards.Count > 0)
+            {
+                Player forward = forwards[rand.Next(forwards.Count)];
+                selectedPlayers.Add(forward);
+                forwards.Remove(forward); // Remove selected player to avoid duplicates
+            }
+
+            // Ensure at least 1 midfielder is selected (if available)
+            if (midfielders.Count > 0)
+            {
+                Player midfielder = midfielders[rand.Next(midfielders.Count)];
+                selectedPlayers.Add(midfielder);
+                midfielders.Remove(midfielder); // Remove selected player to avoid duplicates
+            }
+
+            // Fill remaining slots (if any) from forwards and midfielders
+            while (selectedPlayers.Count < 3)
+            {
+                var availablePlayers = forwards.Concat(midfielders).ToList();
+                if (availablePlayers.Count == 0) break; // No more players to select
+                Player randomPlayer = availablePlayers[rand.Next(availablePlayers.Count)];
+                selectedPlayers.Add(randomPlayer);
+                // Remove the player from their respective list
+                if (randomPlayer.position == Position.Forward)
+                    forwards.Remove(randomPlayer);
+                else if (randomPlayer.position == Position.Midfielder)
+                    midfielders.Remove(randomPlayer);
+            }
+            return selectedPlayers;
         }
         // method to select 3 players for defense (must include a goalkeeper and defender/midfielder)
         public List<Player> selectPlayersForDefense()
