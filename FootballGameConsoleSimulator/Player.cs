@@ -13,7 +13,7 @@ namespace FootballGameConsoleSimulator
         Defender,
         Goalkeeper
     }
-    public class Player
+    public class Player: IPlayer
     {
         //private attributes
         public string name { get; private set; }
