@@ -33,6 +33,8 @@ namespace FootballGameConsoleSimulator
         //method to diplay the round summary
         public void displayMatchDetails() 
         {
+            
+
             Console.WriteLine("\nRound summary:");
             Console.WriteLine($"Attacking Team:{attackingTeam}");
             Console.WriteLine($"Defending Team:{defendingTeam}");

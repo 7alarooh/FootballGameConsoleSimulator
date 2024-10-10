@@ -3,6 +3,8 @@
     public class Program
     {
         static private Match match;
+        Team team1;
+        Team team2;
         static void Main(string[] args)
         {
             bool running = true;
@@ -15,12 +17,15 @@
                 switch (input)
                 {
                     case "1":
+                        Console.Clear();
                         StartNewMatch();
                         break;
                     case "2":
+                        Console.Clear();
                         DisplayMatchDetails();
                         break;
-                    case "3":
+                    case "0":
+                        Console.Clear();
                         Console.WriteLine("\nThank you for playing! Exiting...");
                         running = false;
                         break;
@@ -47,7 +52,7 @@
             Console.WriteLine("=========================================");
             Console.WriteLine("1. Start a New Match");
             Console.WriteLine("2. Display Match Details");
-            Console.WriteLine("3. Exit");
+            Console.WriteLine("0. Exit");
             Console.WriteLine("=========================================");
         }
         // Method to start a new match
@@ -85,6 +90,7 @@
                 match.displayMatchDetails();
             }
         }
+      
 
     }
 }

@@ -9,8 +9,8 @@ namespace FootballGameConsoleSimulator
     public class Match
     {
         // private attributes
-        private Team team1;
-        private Team team2;
+        public Team team1;
+        public Team team2;
         private int currentTurn;
         private int currentHalf;
         private bool extraRound;
@@ -168,8 +168,17 @@ namespace FootballGameConsoleSimulator
         //method to display detailed information about each round
         public void displayMatchDetails()
         {
-            Console.WriteLine("\nMatch Details:");
-            foreach(RoundDetail detail in roundDetails)
+            Console.WriteLine("=========================================");
+            Console.WriteLine("        :... All Team ...:               ");
+            Console.WriteLine("=========================================");
+            team1.DisplayTeamInfo();
+            Console.WriteLine("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
+            team2.DisplayTeamInfo();
+
+            Console.WriteLine("\n=========================================");
+            Console.WriteLine("        :...Match Details ...:               ");
+            Console.WriteLine("=========================================");
+            foreach (RoundDetail detail in roundDetails)
             {
                 detail.displayMatchDetails();
             }
