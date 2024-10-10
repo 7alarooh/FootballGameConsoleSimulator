@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FootballGameConsoleSimulator
 {
-    public class RoundDetail
+    public class RoundDetail: IDisplayInfo
     {
         //private attributes
         public string attackingTeam { get; private set; }
@@ -31,7 +31,7 @@ namespace FootballGameConsoleSimulator
         }
 
         //method to diplay the round summary
-        public void displayMatchDetails() 
+        public void DisplayInfo() 
         {
             
 

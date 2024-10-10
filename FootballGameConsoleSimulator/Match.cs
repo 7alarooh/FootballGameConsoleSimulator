@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FootballGameConsoleSimulator
 {
-    public class Match
+    public class Match: IDisplayInfo, IMatch
     {
         // private attributes
         public Team team1;
@@ -163,7 +163,7 @@ namespace FootballGameConsoleSimulator
             }
 
             // to display final result
-            displayFinalResult();
+            DisplayInfo();
         }
         //method to display detailed information about each round
         public void displayMatchDetails()
@@ -171,20 +171,20 @@ namespace FootballGameConsoleSimulator
             Console.WriteLine("=========================================");
             Console.WriteLine("        :... All Team ...:               ");
             Console.WriteLine("=========================================");
-            team1.DisplayTeamInfo();
+            team1.DisplayInfo();
             Console.WriteLine("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
-            team2.DisplayTeamInfo();
+            team2.DisplayInfo();
 
             Console.WriteLine("\n=========================================");
             Console.WriteLine("        :...Match Details ...:               ");
             Console.WriteLine("=========================================");
             foreach (RoundDetail detail in roundDetails)
             {
-                detail.displayMatchDetails();
+                detail.DisplayInfo();
             }
         }
         //method to display the final result of the match
-        private void displayFinalResult()
+        public void DisplayInfo()
         {
             Console.WriteLine($"\nFinal Score: {team1.getTeamName()} {team1.GetScore()} - {team2.getTeamName()} {team2.GetScore()}");
             if (team1.GetScore() > team2.GetScore())

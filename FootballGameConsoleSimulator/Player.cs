@@ -13,7 +13,7 @@ namespace FootballGameConsoleSimulator
         Defender,
         Goalkeeper
     }
-    public class Player: IPlayer
+    public class Player: IPlayer, IDisplayInfo
     {
         //private attributes
         public string name { get; private set; }
@@ -37,7 +37,7 @@ namespace FootballGameConsoleSimulator
         public int GetskillLevel() {  return this.skillLevel; }
         public Position GetPosition() { return this.position; }
         //method to display player details
-        public void DisplayPlayerInfo() 
+        public void DisplayInfo() 
         {
             Console.WriteLine($"Player: {name} \t|  Position: {position} \t| Skill Level: {skillLevel} \t| Energy: {energyLevel} ");
         }

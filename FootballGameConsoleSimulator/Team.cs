@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace FootballGameConsoleSimulator
 {
-    public class Team
+    public class Team: IDisplayInfo, ITeam
     {
-        //private attributes
+        // attributes
         public string teamName{get; private set;}
         public List<Player> players { get; private set; }
         public string formation { get; private set; }
@@ -182,13 +182,13 @@ namespace FootballGameConsoleSimulator
         // method to get the name of team
         public string getTeamName() { return this.teamName; }
         //method to display team information
-        public void DisplayTeamInfo() 
+        public void DisplayInfo() 
         {
             Console.WriteLine($"| Team: {teamName} ---- formation:{formation} ---- Score: {score} |");
             Console.WriteLine("| Player:-----------------------------------------------------------");
             foreach (var player in players)
             {
-                player.DisplayPlayerInfo();
+                player.DisplayInfo();
             }
         }
 

@@ -12,5 +12,7 @@ namespace FootballGameConsoleSimulator
         Position position { get; }
         int skillLevel { get;}
         int GetskillLevel();
+        Position GetPosition();
+        string GetName();
     }
 }
