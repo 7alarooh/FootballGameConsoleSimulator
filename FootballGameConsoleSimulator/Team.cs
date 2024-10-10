@@ -24,8 +24,11 @@ namespace FootballGameConsoleSimulator
         }
         /////////Methods//////////
         //method to allow the user to choose a formation
-       public void chooseFormation() 
+       public void chooseFormation()
         {
+            Console.WriteLine("=========================================");
+            Console.WriteLine($"        :::: {this.teamName} Team::::     ");
+            Console.WriteLine("=========================================");
             Console.WriteLine("Choose a formation: [1] 4-4-2, [2] 4-3-3 [3] 3-5-2");
             string choice=Console.ReadLine();
             switch (choice) 
@@ -83,6 +86,8 @@ namespace FootballGameConsoleSimulator
         //method to select 3 players for attack (must include at least 1 attacker/ midfielder)
         public List<Player> selectPlayersForAttack()
         {
+            Random rand = new Random();
+
             var attackers=players.Where(p => p.position == Position.Forward || p.position == Position.Midfielder)
                 .OrderByDescending(p=> p.GetEffectiveSkill())
                 .Take(3).ToList();
@@ -106,7 +111,7 @@ namespace FootballGameConsoleSimulator
         //method to calculate total defense power
         public int calculateDefensePower()
         {
-            var selectedDefense = selectPlayersForAttack();
+            var selectedDefense = selectPlayersForDefense();
             int defensePower = selectedDefense.Sum(p => p.GetEffectiveSkill());
             return defensePower;
         }

@@ -2,7 +2,7 @@
 {
     public class Program
     {
-        private Match match;
+        static private Match match;
         static void Main(string[] args)
         {
             bool running = true;
@@ -31,7 +31,7 @@
                 // Pause before returning to the menu
                 if (running)
                 {
-                    Console.WriteLine("\nPress any key to return to the main menu...");
+                    Console.WriteLine("\nPress Enter key to return to the main menu...");
                     Console.ReadKey();
                 }
             }
@@ -40,15 +40,51 @@
         }
 
         // Method to display the main menu
-        private void DisplayMainMenu()
+        static private void DisplayMainMenu()
         {
             Console.WriteLine("=========================================");
-            Console.WriteLine("        :soccer: Soccer Game Simulator :soccer:        ");
+            Console.WriteLine("        :.:.: Soccer Game Simulator :.:.:        ");
             Console.WriteLine("=========================================");
             Console.WriteLine("1. Start a New Match");
             Console.WriteLine("2. Display Match Details");
             Console.WriteLine("3. Exit");
             Console.WriteLine("=========================================");
         }
+        // Method to start a new match
+        static private void StartNewMatch()
+        {
+            Console.Clear();
+            Console.WriteLine("=========================================");
+            Console.WriteLine("        :::: Start a New Soccer Match ::::     ");
+            Console.WriteLine("=========================================");
+            // Get team names
+            Console.Write("\nEnter the name of Team 1: ");
+            string team1Name = Console.ReadLine();
+            
+            Console.Write("Enter the name of Team 2: ");
+            string team2Name = Console.ReadLine();
+            Team team1 = new Team(team1Name);
+            Team team2 = new Team(team2Name);
+            match = new Match(team1, team2);
+            match.startMatch();
+            Console.WriteLine("\nMatch completed! You can now view the details in the menu.");
+        }
+        // Method to display match details
+        static private void DisplayMatchDetails()
+        {
+            Console.Clear();
+            if (match == null)
+            {
+                Console.WriteLine("No match has been played yet! Start a new match first.");
+            }
+            else
+            {
+                Console.WriteLine("=========================================");
+                Console.WriteLine("        :... Match Details ...:               ");
+                Console.WriteLine("=========================================");
+                match.displayMatchDetails();
+            }
+        }
+
     }
 }

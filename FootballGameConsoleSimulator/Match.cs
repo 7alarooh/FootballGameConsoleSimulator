@@ -46,6 +46,8 @@ namespace FootballGameConsoleSimulator
         //method to play a single turn
         public void playTurn(Team attackingTeam, Team defendingTeam)
         {
+
+            Console.WriteLine($"        :... Turn ( {currentTurn + 1} ) ...:               ");
             Console.WriteLine($"\nTurn {currentTurn + 1}:{attackingTeam.getTeamName()} is attacking, {defendingTeam.getTeamName()} is defending.");
 
             //to calculate attack and defense power
@@ -88,6 +90,8 @@ namespace FootballGameConsoleSimulator
                     playTurn(staringTeam, otherTeam);
                 else
                     playTurn(otherTeam, staringTeam);
+                Console.WriteLine("\nPress Enter key to move to the next round...");
+                string nextRound=Console.ReadLine();
             }
             currentHalf++;
         }
@@ -130,7 +134,7 @@ namespace FootballGameConsoleSimulator
         //method to display the final result of the match
         private void displayFinalResult()
         {
-            Console.WriteLine($"\nFinal Score: {team1.getTeamName()} {team1.GetScore} - {team2.getTeamName()} {team2.GetScore()}");
+            Console.WriteLine($"\nFinal Score: {team1.getTeamName()} {team1.GetScore()} - {team2.getTeamName()} {team2.GetScore()}");
             if (team1.GetScore() > team2.GetScore())
             { Console.WriteLine($"{team1.getTeamName()} wins the match!"); }
             else if (team1.GetScore() < team2.GetScore())
