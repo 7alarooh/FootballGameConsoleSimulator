@@ -47,16 +47,16 @@ namespace FootballGameConsoleSimulator
         public void playTurn(Team attackingTeam, Team defendingTeam)
         {
             List<Player> attackingPlayers = attackingTeam.selectPlayersForAttack();
-            List<Player> defendingPlayers = attackingTeam.selectPlayersForDefense();
+            List<Player> defendingPlayers = defendingTeam.selectPlayersForDefense();
             Console.WriteLine($"        :... Turn ( {currentTurn + 1} ) ...:               ");
-            Console.WriteLine($"\nTurn {currentTurn + 1}:{attackingTeam.getTeamName()} is attacking, {defendingTeam.getTeamName()} is defending.");
+            Console.WriteLine($"\n {attackingTeam.getTeamName()} is attacking, {defendingTeam.getTeamName()} is defending.");
 
             //to calculate attack and defense power
             int attackPower = attackingTeam.calculateDefensePower();
             int defensePower = defendingTeam.calculateDefensePower();
 
             Console.WriteLine($"{attackingTeam.getTeamName()} attack: {attackPower}");
-            Console.WriteLine($"{defendingTeam.getTeamName()} attack: {attackPower}");
+            Console.WriteLine($"{defendingTeam.getTeamName()} defense: {defensePower}");
 
             //determine the outcome (goal or save)
             string outcome;
@@ -105,9 +105,9 @@ namespace FootballGameConsoleSimulator
             for (int i = 0; i < 10; i++)
             {
                 if (i % 2 == 2)
-                    playTurn(staringTeam, otherTeam);
-                else
                     playTurn(otherTeam, staringTeam);
+                else
+                    playTurn(staringTeam, otherTeam);
                 Console.WriteLine("\nPress Enter key to move to the next round...");
                 string nextRound=Console.ReadLine();
             }
